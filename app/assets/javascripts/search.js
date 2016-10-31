@@ -15,6 +15,21 @@ function searchParams() {
   });
 }
 
+function updateStatus(linkId, value) {
+  var linkParams = {
+    id: linkId,
+    link: {
+      read: value
+    }
+  };
+
+  $.ajax({
+    url: "/api/v1/links/" + linkId,
+    data: linkParams,
+    type: "PUT"
+  })
+}
+
 function changeStatus(){
   $("#link").on('click', '#change-status', function() {
 
@@ -25,8 +40,11 @@ function changeStatus(){
 
     if(statusText === "true") {
       $status.text("false");
+      updateStatus(linkId, "false")
+
     } else if (statusText === "false") {
       $status.text("true");
+      updateStatus(linkId, "true")
     }
   });
 }

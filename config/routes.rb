@@ -18,4 +18,10 @@ Rails.application.routes.draw do
   get '/:id/edit', to: 'links#edit', as: 'edit_link'
 
   patch '/:id', to: 'links#update', as: 'update_link'
+
+  namespace :api, defaults: { format: 'json'} do
+    namespace :v1 do
+      put '/links/:id', to: 'links#update', as: 'update_link'
+    end
+  end
 end
