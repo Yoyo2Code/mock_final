@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   def index
     # if logged in
     if session[:user_id]
-      @link = current_user.links.new
+      @link = Link.new
       @links = current_user.links
     else
       redirect_to login_path
@@ -18,6 +18,10 @@ class LinksController < ApplicationController
       flash[:danger] = "Invalid Url"
       render :index
     end
+  end
+
+  def edit
+    @link = current_user.links.find(params[:id])
   end
 
   private

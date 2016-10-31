@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :link do
-    title "MyString"
-    url_location "MyString"
+    user nil
+    title "Google"
+    url_location "http://www.Google.com"
   end
 end

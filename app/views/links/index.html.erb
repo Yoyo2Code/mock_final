@@ -15,4 +15,5 @@
 
 <% @links.each do |user_link| %>
   <a href=<%= user_link.url_location %>><%= user_link.title %></a>
+  <a href="/<%= user_link.id %>/edit">Edit</a>
 <% end %>
