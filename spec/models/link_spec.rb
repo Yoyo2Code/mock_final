@@ -4,5 +4,5 @@ RSpec.describe Link, type: :model do
   it { should validate_presence_of(:url_location) }
   # it { should validate_uniqueness_of(:url_location) }
   it { should validate_presence_of(:title) }
-  xit { should define_enum_for(:read) }
+  it { should define_enum_for(:read) }
 end

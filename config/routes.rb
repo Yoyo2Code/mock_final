@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   post '/', to: 'links#create', as: 'create_link'
 
+  post '/login', to: 'sessions#create', as: 'create_login'
 
   get '/login', to: 'sessions#new', as: 'login'
 

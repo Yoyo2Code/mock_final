@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-xdescribe "User", :type => :feature do
+describe "User", :type => :feature do
     scenario "can signout" do
       user = create(:user)
 
@@ -8,7 +8,9 @@ xdescribe "User", :type => :feature do
 
       visit '/'
 
-      click_on 'Log Out'
+      click_on 'Logout'
+
+      expect(page.current_path).to eq("/login")
 
       expect(page).to have_content('Sign-in')
     end

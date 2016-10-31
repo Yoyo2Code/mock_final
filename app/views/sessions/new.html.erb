@@ -1,3 +1,15 @@
 <h1>Log In or Sign Up</h1>
 
+<h1>Login</h1>
+<%= form_for(:session) do |f| %>
+  <%= f.label :username %><br>
+  <%= f.text_field :username %><br>
+
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+
+  <%= f.submit %>
+<% end %>
+
+
 <a href="/sign_up">Sign Up</a>
