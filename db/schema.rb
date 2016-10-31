@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20161031164359) do
     t.integer  "user_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.integer  "read",         default: 0, null: false
+    t.integer  "read",         default: 0
     t.index ["user_id"], name: "index_links_on_user_id", using: :btree
   end
 

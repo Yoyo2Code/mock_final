@@ -7,5 +7,8 @@ class Link < ApplicationRecord
 
   belongs_to :user
 
-  enum status: %w[false true]
+  enum read: {
+                false: 0,
+                true: 1
+                }
 end
