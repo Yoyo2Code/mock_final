@@ -30,6 +30,7 @@ class LinksController < ApplicationController
       flash[:success] = 'Your Link has been saved!'
       redirect_to links_path
     else
+      flash[:danger] = @link.errors.messages[:url_location][0]
       render :edit
     end
   end
