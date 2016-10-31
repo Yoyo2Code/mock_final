@@ -1,13 +1,18 @@
 <h1>Links Index</h1>
 
-<%= form_for(User.new) do |f| %>
+<%= form_for(@link) do |f| %>
 
-<%= f.tabel :url %>
-<%= f.text_field :url %>
+<%= f.label :url_location %>
+<%= f.text_field :url_location %>
 
-<%= f.tabel :title %>
+<%= f.label :title %>
 <%= f.text_field :title %>
 
-<% f.submit %>
+<%= f.submit %>
 
+<% end %>
+
+
+<% @links.each do |user_link| %>
+  <a href=<%= user_link.url_location %>><%= user_link.title %></a>
 <% end %>

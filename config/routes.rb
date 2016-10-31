@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/', to: 'links#index', as: 'links'
 
+  post '/', to: 'links#create', as: 'create_link'
+
   get '/login', to: 'sessions#new', as: 'login'
 
   get '/sign_up', to: "users#new", as: 'sign_up'

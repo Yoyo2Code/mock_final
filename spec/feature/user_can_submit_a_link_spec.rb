@@ -11,12 +11,10 @@ describe "User", :type => :feature do
 
       expect(page).to have_content('Links Index')
 
-      fill_in :title, with: "Google"
-      fill_in :url, with: "http://www.google.com"
+      fill_in :link_title, with: "Google"
+      fill_in :link_url_location, with: "http://www.google.com"
 
       click_on "Create Link"
-
-      save_and_open_page
 
       expect(page).to have_content("Google")
       # expect(page).to have_content("http://www.google.com")

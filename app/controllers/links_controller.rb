@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   def index
     # if logged in
     if session[:user_id]
-      byebug
+      @link = current_user.links.new
       @links = current_user.links
     else
       redirect_to login_path
