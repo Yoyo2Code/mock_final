@@ -1,5 +1,5 @@
-class HomeController < ApplicationController
-  def show
+class LinksController < ApplicationController
+  def index
     # if logged in
     if session[:user_id]
     else

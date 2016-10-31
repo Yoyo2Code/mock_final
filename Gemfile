@@ -40,6 +40,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem "factory_girl_rails"
   gem 'simplecov', require: false
+  gem 'rack_session_access'
 end
 
 gem 'rails_12factor', group: :production

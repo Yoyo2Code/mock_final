@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <% if session[:user_id] %>
+      <%= link_to 'Logout', logout_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign-in', login_path %>
+    <% end %>
+
   <% flash.each do |type, message| %>
     <%= content_tag :div, sanitize(message), class: "flash-#{type}" %>
   <% end %>
