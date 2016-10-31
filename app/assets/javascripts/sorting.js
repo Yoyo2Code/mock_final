@@ -31,7 +31,7 @@ function updateStatus(linkId, value) {
 }
 
 function changeStatus(){
-  $("#link").on('click', '#change-status', function() {
+  $(".links").on('click', '#change-status', function() {
 
     var $link = $(this).closest("#link");
     var linkId = $link.attr("data-id");
@@ -46,6 +46,34 @@ function changeStatus(){
       $status.text("true");
       updateStatus(linkId, "true")
     }
+
+  });
+}
+
+function sortAlphabetically() {
+  $("#alpha").on('click', function(){
+
+    let $divs = $(".links").children();
+      var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
+          return $(a).find("#link-url").text() > $(b).find(".link-url").text();
+      });
+        $(".links").html(alphabeticallyOrderedDivs);
+  });
+}
+
+function filterBy() {
+  $(".sort").on('click', function(){
+    var filter = $(this).text();
+
+    let $divs = $(".links").children();
+
+    $divs.each(function() {
+      if( $(this).find("#status").text().includes(filter) ) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      };
+    });
   });
 }
 
@@ -53,4 +81,6 @@ function changeStatus(){
 $(document).ready(function(){
   searchParams();
   changeStatus();
+  filterBy();
+  sortAlphabetically
 })

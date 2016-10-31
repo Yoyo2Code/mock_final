@@ -14,6 +14,13 @@
     <input id="search" type="text" name="name" placeholder="Search...">
 <br>
 <br>
+  <p>Sort By Read: </p>
+    <button class="sort" type="button">true</button>
+    <button class="sort" type="button">false</button>
+    <br>
+    <br>
+  <button id="alpha" type="button" name="button">Sort Alphabetically</button>
+
 <div class="links">
     <% @links.each do |user_link| %>
       <div id="link" data-id="<%= user_link.id %>">
