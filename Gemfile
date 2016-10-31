@@ -44,6 +44,10 @@ group :development, :test do
   gem 'rack_session_access'
 end
 
+group :test do
+  gem 'selenium-webdriver'
+end
+
 gem 'rails_12factor', group: :production
 
 group :development do

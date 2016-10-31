@@ -1,19 +1,25 @@
 <h1>Links Index</h1>
 
 <%= form_for(@link) do |f| %>
+  <%= f.label :url_location %>: <br>
+  <%= f.text_field :url_location %><br>
 
-<%= f.label :url_location %>
-<%= f.text_field :url_location %>
+  <%= f.label :title %>: <br>
+  <%= f.text_field :title %><br>
 
-<%= f.label :title %>
-<%= f.text_field :title %>
-
-<%= f.submit %>
-
+  <%= f.submit %>
 <% end %>
-
-
-<% @links.each do |user_link| %>
-  <a href=<%= user_link.url_location %>><%= user_link.title %></a>
-  <a href="/<%= user_link.id %>/edit">Edit</a>
-<% end %>
+<br>
+  <p>Search Links: </p>
+    <input id="search" type="text" name="name" placeholder="Search...">
+<br>
+<br>
+<div class="links">
+    <% @links.each do |user_link| %>
+      <div id="link">
+      <a id="link-url" href=<%= user_link.url_location %>><%= user_link.title %></a>
+      <a id="link-title" href="/<%= user_link.id %>/edit">Edit</a>
+      <button type="button" name="read">Change Status</button>
+    </div>
+  <% end %>
+</div>
