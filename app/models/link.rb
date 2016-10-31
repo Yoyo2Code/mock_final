@@ -5,8 +5,7 @@ class Link < ApplicationRecord
 
   validates_presence_of :title
 
-  has_many :user_links
-  has_many :users, through: :user_links
+  belongs_to :user
 
   enum status: %w[false true]
 end
