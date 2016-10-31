@@ -6,7 +6,7 @@ describe "Unauthorized visitor", :type => :feature do
 
       visit '/'
 
-      expect(page.current_url).to eq '/login'
+      expect(page.current_path).to eq '/login'
 
       expect(page).to have_content('Log In or Sign Up')
     end
