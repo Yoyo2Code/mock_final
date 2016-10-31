@@ -3,4 +3,7 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   has_secure_password
+
+  has_many :user_links
+  has_many :links, through: :user_links
 end

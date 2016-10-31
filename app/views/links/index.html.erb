@@ -1,1 +1,13 @@
 <h1>Links Index</h1>
+
+<%= form_for(User.new) do |f| %>
+
+<%= f.tabel :url %>
+<%= f.text_field :url %>
+
+<%= f.tabel :title %>
+<%= f.text_field :title %>
+
+<% f.submit %>
+
+<% end %>
