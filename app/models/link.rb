@@ -3,6 +3,9 @@ class Link < ApplicationRecord
   validates_uniqueness_of :url_location
   validates :url_location, :url => true
 
+  has_many :link_tags
+  has_many :tags, through: :link_tags
+
   validates_presence_of :title
 
   belongs_to :user
