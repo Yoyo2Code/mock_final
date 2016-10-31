@@ -9,10 +9,12 @@ describe "Unauthorized visitor", :type => :feature do
 
       click_on 'Sign Up'
 
-      fill_in :username, with: "username"
-      fill_in :password, with: "newPassword"
+      fill_in :Username, with: "username"
+      fill_in :Password, with: "newPassword"
 
-      expect(page).to have_content("Email already exists")
+      click_on 'Create User'
+
+      expect(page).to have_content("Username already in use")
     end
   end
 end
