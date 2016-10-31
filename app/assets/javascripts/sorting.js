@@ -10,7 +10,7 @@ function searchParams() {
         $(this).show();
       } else {
         $(this).hide();
-      };
+      }
     });
   });
 }
@@ -27,7 +27,7 @@ function updateStatus(linkId, value) {
     url: "/api/v1/links/" + linkId,
     data: linkParams,
     type: "PUT"
-  })
+  });
 }
 
 function changeStatus(){
@@ -40,11 +40,11 @@ function changeStatus(){
 
     if(statusText === "true") {
       $status.text("false");
-      updateStatus(linkId, "false")
+      updateStatus(linkId, "false");
 
     } else if (statusText === "false") {
       $status.text("true");
-      updateStatus(linkId, "true")
+      updateStatus(linkId, "true");
     }
 
   });
@@ -53,8 +53,8 @@ function changeStatus(){
 function sortAlphabetically() {
   $("#alpha").on('click', function(){
 
-    let $divs = $(".links").children();
-      var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
+    var $alphaDivs = $(".links").children();
+      var alphabeticallyOrderedDivs = $alphaDivs.sort(function (a, b) {
           return $(a).find("#link-url").text() > $(b).find(".link-url").text();
       });
         $(".links").html(alphabeticallyOrderedDivs);
@@ -65,14 +65,14 @@ function filterBy() {
   $(".sort").on('click', function(){
     var filter = $(this).text();
 
-    let $divs = $(".links").children();
+    var $statusDivs = $(".links").children();
 
-    $divs.each(function() {
+    $statusDivs.each(function() {
       if( $(this).find("#status").text().includes(filter) ) {
         $(this).show();
       } else {
         $(this).hide();
-      };
+      }
     });
   });
 }
@@ -82,5 +82,5 @@ $(document).ready(function(){
   searchParams();
   changeStatus();
   filterBy();
-  sortAlphabetically
-})
+  sortAlphabetically();
+});
