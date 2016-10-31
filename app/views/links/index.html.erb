@@ -19,7 +19,7 @@
       <div id="link" data-id="<%= user_link.id %>">
       <a id="link-url" href=<%= user_link.url_location %>><%= user_link.title %></a>
       <a id="link-title" href="/<%= user_link.id %>/edit">Edit</a>
-      <p id="status" >Read: <%= user_link.read %></p>
+      Read: <p id="status" ><%= user_link.read %></p>
       <button id="change-status" type="button" name="read">Change Status</button>
     </div>
   <% end %>

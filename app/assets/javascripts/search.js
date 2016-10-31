@@ -16,16 +16,16 @@ function searchParams() {
 }
 
 function changeStatus(){
-  $("links").on('click', 'change-status', function() {
-    var $link = $(this).closest(".link");
+  $("#link").on('click', '#change-status', function() {
+
+    var $link = $(this).closest("#link");
     var linkId = $link.attr("data-id");
-    var $status = $idea.find("#status");
+    var $status = $link.find("#status");
     var statusText = $status.text();
+
     if(statusText === "true") {
-      debugger;
       $status.text("false");
     } else if (statusText === "false") {
-      debugger;
       $status.text("true");
     }
   });
