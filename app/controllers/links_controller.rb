@@ -24,6 +24,16 @@ class LinksController < ApplicationController
     @link = current_user.links.find(params[:id])
   end
 
+  def update
+    @link = current_user.links.find(params[:id])
+    if @link.update(link_params)
+      flash[:success] = 'Your Link has been saved!'
+      redirect_to links_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def link_params

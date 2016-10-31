@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post '/users', to: "users#create", as: 'users'
 
   delete '/logout', to: 'sessions#destroy', as: 'logout'
-  
+
   get '/:id/edit', to: 'links#edit', as: 'edit_link'
+
+  patch '/:id', to: 'links#update', as: 'update_link'
 end

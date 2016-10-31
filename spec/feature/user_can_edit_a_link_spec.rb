@@ -18,8 +18,13 @@ describe 'User', type: :feature do
 
       click_on "Edit"
 
-      
+      fill_in :Title, with: "New Google"
 
+      click_on "Update Link"
+
+      expect(page.current_path).to eq("/")
+
+      expect(page).to have_content("New Google")
     end
   end
 end
