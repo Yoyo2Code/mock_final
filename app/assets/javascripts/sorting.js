@@ -77,6 +77,18 @@ function filterBy() {
   });
 }
 
+function addTags() {
+  $('.links').on('click', 'add-tag', function(){
+    var tagInput = this.find('.apply-tags');
+    var tagText = tagInput.value();
+    tagInput.text('');
+
+    // add tag to Dom
+  });
+}
+
+
+
 
 $(document).ready(function(){
   searchParams();
