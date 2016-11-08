@@ -87,6 +87,11 @@ function addTags() {
     });
 
     updateStatus(linkId,tagNames);
+    var tags = createTags(linkId, tagNames);
+
+    $(this).parent().append(tags);
+    // tagInput.append(tags)
+
     tagInput.text('');
   });
 }
@@ -106,7 +111,18 @@ function updateStatus(linkId, tagNames) {
   });
 }
 
+function createTags(linkId, tagNames) {
+  var tags = tagNames.map(function(name) {
+      return $(
+      "<button class='sort'>",
+      + name,
+      + "</button>",
+      + "<button class='delete-tag'>Delete Tag</button>"
+    );
+  });
 
+  return tags;
+}
 
 $(document).ready(function(){
   searchParams();
