@@ -78,12 +78,13 @@ function filterBy() {
 }
 
 function addTags() {
-  $('.links').on('click', 'add-tag', function(){
-    var tagInput = this.find('.apply-tags');
-    var tagText = tagInput.value();
+  $('.links').on('click', '.add-tag', function(){
+    // var $link = $(this).closest("#link");
+
+    var tagInput = $(this).parent().find(".tag-form");
+    var tagNames = tagInput.val();
     tagInput.text('');
 
-    // add tag to Dom
   });
 }
 
@@ -95,4 +96,5 @@ $(document).ready(function(){
   changeStatus();
   filterBy();
   sortAlphabetically();
+  addTags();
 });
