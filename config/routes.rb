@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json'} do
     namespace :v1 do
       put '/links/:id', to: 'links#update', as: 'update_link'
+      put '/tags/:id', to: 'tags#update', as: 'update_tags'
     end
   end
 end

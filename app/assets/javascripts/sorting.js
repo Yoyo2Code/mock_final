@@ -79,15 +79,32 @@ function filterBy() {
 
 function addTags() {
   $('.links').on('click', '.add-tag', function(){
-    // var $link = $(this).closest("#link");
-
+    var linkId = $(this).parent().attr('data-id');
     var tagInput = $(this).parent().find(".tag-form");
-    var tagNames = tagInput.val();
-    tagInput.text('');
+    var requestedTagNames = tagInput.val().split(',');
+    var tagNames = requestedTagNames.map(function(t) {
+      return t.trim();
+    });
 
+    updateStatus(linkId,tagNames);
+    tagInput.text('');
   });
 }
 
+function updateStatus(linkId, tagNames) {
+  var linkParams = {
+    id: linkId,
+    link: {
+      tags: tagNames
+    }
+  };
+
+  $.ajax({
+    url: "/api/v1/tags/" + linkId,
+    data: linkParams,
+    type: "PUT"
+  });
+}
 
 
 
