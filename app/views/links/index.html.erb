@@ -5,40 +5,59 @@
 
     <%= f.label :title %>: <br>
     <%= f.text_field :title %><br>
-    <br>
+      <br>
     <%= f.submit %>
   <% end %>
 <br>
 <div class="sort-criteria">
-
   <p>Search: </p>
     <input id="search" type="text" name="name" placeholder="Search...">
-<br>
-  <br>
-    <p>Sort By </p>
-    <p>Read: </p>
-      <button class="sort" type="button">true</button>
-      <button class="sort" type="button">false</button>
     <br>
     <br>
-    <p>OR</p>
-      <button id="alpha" type="button" name="button">Sort Alphabetically</button>
+      <p>Sort By </p>
+      <p>Read: </p>
+        <button class="sort" type="button">true</button>
+        <button class="sort" type="button">false</button>
+    <br>
+    <br>
+      <p>OR</p>
+        <button id="alpha" type="button" name="button">Sort Alphabetically</button>
+
+        <h2>All Tags:</h2>
+
+        <% @tags.each do |tag| %>
+          <div class="tag-data" data-id="<%= tag.id %>">
+            <button class="sort-tag" type="button" name="button"><%= tag.title %></button>
+            <button class='delete-tag' type="button" name="button">Delete Tag</button>
+          </div>
+        <% end %>
 </div>
 
 <div class="links">
     <% @links.each do |user_link| %>
       <div id="link" data-id="<%= user_link.id %>">
-      <a id="link-url" href=<%= user_link.url_location %>><%= user_link.title %></a>
-      <br>
-      <br>
-      <a id="link-title" href="/<%= user_link.id %>/edit">Edit</a>
-      <br>
-      <br>
-      Read: <p id="status" ><%= user_link.read %></p>
-      <button id="change-status" type="button" name="read">Change Status</button>
-      <br>
-      <br>
-      <input class="apply-tags" placeholder="Add Tags...">
+        <a id="link-url" href=<%= user_link.url_location %>><%= user_link.title %></a>
+        <br>
+        <br>
+          <a id="link-title" href="/<%= user_link.id %>/edit">Edit</a>
+        <br>
+        <br>
+          Read: <p id="status" ><%= user_link.read %></p>
+          <button id="change-status" type="button" name="read">Change Status</button>
+        <br>
+        <br>
+          <input class="tag-form" placeholder="Add Tags...">
+          <button class="add-tag" type="button">Add Tags</button>
+
+          <h4>Tags:</h4>
+            <div class="link-tags">
+              <% user_link.tags.each do |tag| %>
+              <div class="tag-data" data-id="<%= tag.id %>">
+                <button class="sort-tag" type="button" name="button"><%= tag.title %></button>
+                <button class='delete-tag' type="button" name="button">Delete Tag</button>
+              </div>
+              <% end %>
+            </div>
     </div>
   <% end %>
 </div>
