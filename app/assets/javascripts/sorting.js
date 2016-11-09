@@ -86,17 +86,19 @@ function addTags() {
       return t.trim();
     });
 
-    updateStatus(linkId,tagNames);
-    var tags = createTags(linkId, tagNames);
+    updateTags(linkId,tagNames);
+    var tags = tagNames.map(function(name) {
+      return createTag(name);
+    });
 
-    $(this).parent().append(tags);
+    $(this).parent().find('.link-tags').append(tags);
     // tagInput.append(tags)
 
     tagInput.text('');
   });
 }
 
-function updateStatus(linkId, tagNames) {
+function updateTags(linkId, tagNames) {
   var linkParams = {
     id: linkId,
     link: {
@@ -111,17 +113,66 @@ function updateStatus(linkId, tagNames) {
   });
 }
 
-function createTags(linkId, tagNames) {
-  var tags = tagNames.map(function(name) {
-      return $(
-      "<button class='sort'>",
-      + name,
-      + "</button>",
-      + "<button class='delete-tag'>Delete Tag</button>"
-    );
-  });
+function createTag(name) {
+    return $("<br>"
+    + "<div class='tag-data'"
+    + "<button class='sort tag'>"
+    + name
+    + "</button>"
+    + "<button class='delete-tag'>Delete Tag</button>"
+    + "</div>"
+    + "<br>");
+}
 
-  return tags;
+function deleteTag() {
+  $(".links").on('click', '.delete-tag', function() {
+    var linkId = $(this).parent().parent().parent().attr("data-id");
+    var tagDiv = $(this).parent();
+    var tagId = tagDiv.attr("data-id");
+
+    removeTag(linkId, tagId);
+
+    tagDiv.remove();
+  });
+}
+
+function removeTag(linkId, tagId) {
+  var linkParams = {
+    id: linkId,
+    link: {
+      tagId: tagId
+    }
+  };
+
+  $.ajax({
+    url: "/api/v1/tags/" + linkId,
+    data: linkParams,
+    type: "DELETE"
+  });
+}
+
+function filterByTag() {
+  $(".sort-tag").on('click', function(){
+    var filter = $(this).text();
+
+    var $statusDivs = $(".links").children();
+
+    $statusDivs.each(function() {
+      var allTags = $(this).find(".sort-tag");
+
+      var tagNames = allTags.map(function(tagIndex) {
+        return allTags[tagIndex].innerHTML;
+      });
+
+      var names = $.makeArray(tagNames);
+
+      if( names.includes(filter) ) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  });
 }
 
 $(document).ready(function(){
@@ -130,4 +181,6 @@ $(document).ready(function(){
   filterBy();
   sortAlphabetically();
   addTags();
+  deleteTag();
+  filterByTag();
 });

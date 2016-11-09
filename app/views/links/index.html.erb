@@ -22,6 +22,15 @@
     <br>
       <p>OR</p>
         <button id="alpha" type="button" name="button">Sort Alphabetically</button>
+
+        <h2>All Tags:</h2>
+
+        <% @tags.each do |tag| %>
+          <div class="tag-data" data-id="<%= tag.id %>">
+            <button class="sort-tag" type="button" name="button"><%= tag.title %></button>
+            <button class='delete-tag' type="button" name="button">Delete Tag</button>
+          </div>
+        <% end %>
 </div>
 
 <div class="links">
@@ -39,6 +48,16 @@
         <br>
           <input class="tag-form" placeholder="Add Tags...">
           <button class="add-tag" type="button">Add Tags</button>
+
+          <h4>Tags:</h4>
+            <div class="link-tags">
+              <% user_link.tags.each do |tag| %>
+              <div class="tag-data" data-id="<%= tag.id %>">
+                <button class="sort-tag" type="button" name="button"><%= tag.title %></button>
+                <button class='delete-tag' type="button" name="button">Delete Tag</button>
+              </div>
+              <% end %>
+            </div>
     </div>
   <% end %>
 </div>

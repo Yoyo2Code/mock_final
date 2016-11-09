@@ -6,4 +6,9 @@ class Api::V1::TagsController < ApplicationController
       link.tags.find_or_create_by(title: tag_name)
     end
   end
+
+  def delete
+    link = Link.find(params[:id])
+    link.tags.delete(params[:link]['tagId'])
+  end
 end

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       put '/links/:id', to: 'links#update', as: 'update_link'
       put '/tags/:id', to: 'tags#update', as: 'update_tags'
+      delete '/tags/:id', to: 'tags#delete', as: 'delete_tag'
     end
   end
 end
