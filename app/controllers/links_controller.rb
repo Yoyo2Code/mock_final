@@ -15,7 +15,7 @@ class LinksController < ApplicationController
       redirect_to links_path
     else
       flash[:danger] = "Invalid Url"
-      render :new
+      redirect_to '/'
     end
   end
 
