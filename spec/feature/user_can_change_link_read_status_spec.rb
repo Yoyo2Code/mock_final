@@ -18,9 +18,11 @@ describe "User", type: :feature, js: true do
 
       expect(page).to have_content('Read: false')
 
-      click_on "Change Status"
+      click_on "Mark as Read"
 
       expect(page).to have_content('Read: true')
+      expect(page).to have_content('Mark as Unread')
+      expect(page).to_not have_content('Mark as Read')
     end
   end
 end

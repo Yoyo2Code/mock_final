@@ -45,7 +45,7 @@
         <br>
         <br>
           Read: <p id="status" ><%= user_link.read %></p>
-          <% if user_link.read %>
+          <% if user_link.read == "true" %>
             <button id="change-status" type="button" name="read">Mark as Unread</button>
           <% else %>
             <button id="change-status" type="button" name="read">Mark as Read</button>

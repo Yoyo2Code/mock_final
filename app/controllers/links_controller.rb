@@ -29,7 +29,7 @@ class LinksController < ApplicationController
       flash[:success] = 'Your Link has been saved!'
       redirect_to links_path
     else
-      flash[:danger] = @link.errors.full_messages
+      flash[:danger] = @link.errors.full_messages.join(", ")
       render :edit
     end
   end

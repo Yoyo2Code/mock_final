@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User', type: :feature, js: true do
   context "on home page" do
-    xit "can sort alphabetically" do
+    it "can sort alphabetically" do
       user = create(:user)
       link = create(:link,
                     user_id: user.id,
@@ -27,7 +27,7 @@ describe 'User', type: :feature, js: true do
 
     end
 
-    xit "can sort read links" do
+    it "can sort read links" do
       user = create(:user)
       link = create(:link,
                     user_id: user.id,
@@ -49,7 +49,7 @@ describe 'User', type: :feature, js: true do
       visit '/'
     end
 
-    xit "can sort unread links" do
+    it "can sort unread links" do
       user = create(:user)
       link = create(:link,
                     user_id: user.id,

@@ -5,14 +5,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @check_user = User.new(username: params[:user][:password_confirmation])
-    if @user.save && @check_user.save
+    # @check_user = User.new(user_check_params)
+    if passwords_match? && @user.save
       session[:user_id] = @user.id
       flash[:success]   = "User Successfully Created"
       redirect_to '/'
     else
+      flash[:danger] = @user.errors.full_messages.join(", ")
       @user = User.new
-      flash[:danger] = @check_user.errors.full_messages
       render :new
     end
   end
@@ -20,5 +20,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password)
+  end
+
+  def user_check_params
+    params.require(:user).permit(:username, :password_confirmation)
+  end
+
+  def passwords_match?
+    params[:password] == params[:password_confirmation]
   end
 end
