@@ -47,6 +47,7 @@ describe 'User', type: :feature, js: true do
       page.set_rack_session(user_id: user.id)
 
       visit '/'
+
     end
 
     xit "can sort unread links" do
@@ -69,6 +70,8 @@ describe 'User', type: :feature, js: true do
       page.set_rack_session(user_id: user.id)
 
       visit '/'
+
+
     end
   end
 end
