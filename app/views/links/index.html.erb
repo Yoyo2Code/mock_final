@@ -25,12 +25,14 @@
 
         <h2>All Tags:</h2>
 
+        <div class="all-tags">
         <% @tags.each do |tag| %>
           <div class="tag-data" data-id="<%= tag.id %>">
             <button class="sort-tag" type="button" name="button"><%= tag.title %></button>
-            <button class='delete-tag' type="button" name="button">Delete Tag</button>
+            <button class='delete-tag-in-all' type="button" name="button">Delete Tag</button>
           </div>
         <% end %>
+      </div>
 </div>
 
 <div class="links">
@@ -43,7 +45,11 @@
         <br>
         <br>
           Read: <p id="status" ><%= user_link.read %></p>
-          <button id="change-status" type="button" name="read">Change Status</button>
+          <% if user_link.read %>
+            <button id="change-status" type="button" name="read">Mark as Unread</button>
+          <% else %>
+            <button id="change-status" type="button" name="read">Mark as Read</button>
+          <% end %>
         <br>
         <br>
           <input class="tag-form" placeholder="Add Tags...">

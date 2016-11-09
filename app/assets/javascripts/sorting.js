@@ -33,6 +33,8 @@ function updateStatus(linkId, value) {
 function changeStatus(){
   $(".links").on('click', '#change-status', function() {
 
+    var self = $(this);
+
     var $link = $(this).closest("#link");
     var linkId = $link.attr("data-id");
     var $status = $link.find("#status");
@@ -40,13 +42,14 @@ function changeStatus(){
 
     if(statusText === "true") {
       $status.text("false");
+      self.text("Mark as Read");
       updateStatus(linkId, "false");
 
     } else if (statusText === "false") {
       $status.text("true");
+      self.text("Mark as Unread");
       updateStatus(linkId, "true");
     }
-
   });
 }
 
@@ -175,6 +178,26 @@ function filterByTag() {
   });
 }
 
+function deleteAllSelectedTags() {
+  $('.all-tags').on('click', '.delete-tag-in-all', function() {
+    var tagDiv = $(this).parent();
+    var tagId = tagDiv.attr("data-id");
+    var tag = tagDiv.find('.sort-tag');
+
+    var tagName = tag.innerHTML;
+
+    deleteTagInDatabase(tagId);
+    tagDiv.remove();
+  });
+}
+
+function deleteTagInDatabase(tagId) {
+  $.ajax({
+    url: "/api/v1/all-tags/" + tagId,
+    type: "DELETE"
+  });
+}
+
 $(document).ready(function(){
   searchParams();
   changeStatus();
@@ -183,4 +206,5 @@ $(document).ready(function(){
   addTags();
   deleteTag();
   filterByTag();
+  deleteAllSelectedTags();
 });

@@ -31,7 +31,7 @@ describe "Unauthorized visitor", :type => :feature do
 
       click_on 'Create User'
 
-      expect(page).to have_content("Links Index")
+      expect(page).to have_content("Username already in use")
     end
   end
 end

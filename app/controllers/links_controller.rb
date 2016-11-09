@@ -15,7 +15,7 @@ class LinksController < ApplicationController
       redirect_to links_path
     else
       flash[:danger] = "Invalid Url"
-      render :index
+      render :new
     end
   end
 
@@ -29,7 +29,7 @@ class LinksController < ApplicationController
       flash[:success] = 'Your Link has been saved!'
       redirect_to links_path
     else
-      flash[:danger] = @link.errors.messages[:url_location][0]
+      flash[:danger] = @link.errors.full_messages
       render :edit
     end
   end

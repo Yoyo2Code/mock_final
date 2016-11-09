@@ -5,13 +5,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    @check_user = User.new(username: params[:user][:password_confirmation])
+    if @user.save && @check_user.save
       session[:user_id] = @user.id
       flash[:success]   = "User Successfully Created"
       redirect_to '/'
     else
-      # flash[:danger] = @user.errors.messages
-      flash[:danger] = 'Username already in use'
+      @user = User.new
+      flash[:danger] = @check_user.errors.full_messages
       render :new
     end
   end
